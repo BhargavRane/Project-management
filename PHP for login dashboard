@@ -1,0 +1,39 @@
+<?php
+// Replace these credentials with your actual database credentials
+$servername = "localhost";
+$username = "your_db_username";
+$password = "your_db_password";
+$dbname = "your_db_name";
+
+// Create a database connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Get user input from the login form
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+// Hash the password (you should use a secure hashing method in production)
+$hashedPassword = md5($password);
+
+// Query to check if the user exists
+$sql = "SELECT * FROM users WHERE username = '$username' AND password = '$hashedPassword'";
+$result = $conn->query($sql);
+
+if ($result->num_rows == 1) {
+    // User authenticated successfully
+    session_start();
+    $_SESSION['username'] = $username; // Store user information in a session
+    header("Location: dashboard.php"); // Redirect to the dashboard or desired page
+} else {
+    // Invalid credentials, redirect back to login page with an error message
+    header("Location: login.php?error=1");
+}
+
+// Close the database connection
+$conn->close();
+?>
