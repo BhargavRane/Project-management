@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leave Management Dashboard</title>
+    <style>
+        /* Add your CSS styles for the dashboard here */
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Add your header content here (e.g., navigation menu) -->
+    </header>
+    <div class="container">
+        <h1>Leave Management Dashboard</h1>
+        <!-- Add your dashboard components here -->
+    </div>
+    <footer>
+        <!-- Add your footer content here (e.g., copyright information) -->
+    </footer>
+</body>
+</html>
